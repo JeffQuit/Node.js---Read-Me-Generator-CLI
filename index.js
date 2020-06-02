@@ -1,6 +1,7 @@
 //Required Modules
 const fs = require('fs');
 const axios = require('axios');
+const moment = require('moment');
 const util = require('util');
 const inquirer = require('inquirer');
 
@@ -13,6 +14,11 @@ const questions = [
 	{
 		message: 'Enter your GitHub username:',
 		name: 'username',
+	},
+	{
+		type: 'input',
+		message: 'What is your full name?',
+		name: 'projectfullname',
 	},
 	{
 		type: 'input',
@@ -59,7 +65,7 @@ const questions = [
 		type: 'list',
 		message: 'What license was used for this project?',
 		name: 'projectlicense',
-		choices: ['option 1', 'option 2', 'option 3'],
+		choices: ['Apache License 2.0', 'GNU GPLv2', 'GNU GPLv3', 'MIT', 'ISC License'],
 	},
 ];
 
@@ -84,9 +90,58 @@ function init() {
 		const projectTest = data.projecttestinstructions;
 		const githubUsername = data.username;
 		const emailAddress = data.projectemail;
+		const fullname = data.projectfullname;
+		let badge = '';
+		let licenseText = '';
+		const copywriteYear = moment().format('YYYY');
 
+		//If Statement for License
+		if (projectLicense === 'Apache License 2.0') {
+			badge = '';
+			licenseText = '';
+		} else if (projectLicense === 'GNU GPLv2') {
+			badge = '';
+			licenseText = '';
+		} else if (projectLicense === 'GNU GPLv3') {
+			badge = '';
+			licenseText = '';
+		} else if (projectLicense === 'MIT') {
+			badge = '![GitHub](https://img.shields.io/github/license/JeffQuit/readmeGen?style=plastic)';
+			licenseText = `
+			MIT License
+
+			Copyright (c) ${copywriteYear} ${fullname}
+			
+			Permission is hereby granted, free of charge, to any person obtaining a copy
+			of this software and associated documentation files (the "Software"), to deal
+			in the Software without restriction, including without limitation the rights
+			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+			copies of the Software, and to permit persons to whom the Software is
+			furnished to do so, subject to the following conditions:
+			
+			The above copyright notice and this permission notice shall be included in all
+			copies or substantial portions of the Software.
+			
+			THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+			FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+			AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+			LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+			SOFTWARE.`;
+		} else if (projectLicense === 'ISC License') {
+			badge = '';
+			licenseText = '';
+		} else {
+			badge = 'N/A';
+			licenseText = 'N/A';
+		}
+
+		//* Readme Content Below
 		const readMeContent = `
 # ${projectTitle}
+
+${badge}
 
 ## Description
 ${projectDescription}
@@ -109,7 +164,7 @@ ${projecUsage}
 ${projecCredits}
 
 ## License
-${projectLicense}
+Licensed under the ${licenseText} license. 
 
 ## Badges
 ${projectDescription}
@@ -118,7 +173,7 @@ ${projectDescription}
 ${projectContributions}
 
 ## Questions
-For any questions related to this applicaiton, please contact me at: ${emailAddress}
+For any questions related to this applicaiton, please contact me at: ${emailAddress}. \n
 Please use this link to access my Github Profile: [https://github.com/${githubUsername}](https://github.com/${githubUsername})
 
 ## Tests
@@ -127,6 +182,9 @@ ${projectTest}`;
 		writeToFile('README.md', readMeContent);
 	});
 }
+
+//
+//
 
 //Call Function
 init();
