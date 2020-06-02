@@ -86,40 +86,43 @@ function init() {
 		const emailAddress = data.projectemail;
 
 		const readMeContent = `
-		# ${projectTitle}
+# ${projectTitle}
 
-		## Description
-		${projectDescription}
+## Description
+${projectDescription}
 
-		## Table of Contents
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+* [Contributing](#contributing)
+* [Questions](#questions)
 
+## Installation
+${projectInstall}
 
-		## Installation
-		${projectInstall}
+## Usage
+${projecUsage}
 
-		## Usage
-		${projecUsage}
+## Credits
+${projecCredits}
 
-		## Credits
-		${projecCredits}
+## License
+${projectLicense}
 
-		## License
-		${projectLicense}
+## Badges
+${projectDescription}
 
-		## Badges
-		${projectDescription}
+## Contributing
+${projectContributions}
 
-		## Contributing
-		${projectContributions}
+## Questions
+For any questions related to this applicaiton, please contact me at: ${emailAddress}
+Please use this link to access my Github Profile: [https://github.com/${githubUsername}](https://github.com/${githubUsername})
 
-		## Questions
-		For any questions related to this applicaiton, please contact me at: ${emailAddress}
-		Please use this link to access my Github Profile: [https://github.com/${githubUsername}](https://github.com/${githubUsername})
-
-		## Tests
-		${projectTest}
-
-		`;
+## Tests
+${projectTest}`;
 		//Call write to file func
 		writeToFile('README.md', readMeContent);
 	});
