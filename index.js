@@ -77,7 +77,6 @@ function writeToFile(fileName, data) {
 
 function init() {
 	inquirer.prompt(questions).then(function (data) {
-		console.log(data.projectinstall);
 		const projectTitle = data.projecttitle;
 		const projectDescription = data.projectdes;
 		const projectInstall = data.projectinstall;
@@ -1000,9 +999,6 @@ ${projecCredits}
 ## License
 ${licenseText}
 
-## Badges
-${projectDescription}
-
 ## Contributing
 ${projectContributions}
 
@@ -1010,8 +1006,8 @@ ${projectContributions}
 ${projectTest}
 
 ## Questions
-For any questions related to this applicaiton, please contact me at: ${emailAddress}. \n
-Please use this link to access my Github Profile: [https://github.com/${githubUsername}](https://github.com/${githubUsername})
+- For any questions related to this applicaiton, please contact me at: ${emailAddress}. \n
+- Please use this link to access my Github Profile: [https://github.com/${githubUsername}](https://github.com/${githubUsername})
 
 `;
 		//Call write to file func

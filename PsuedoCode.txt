@@ -4,24 +4,28 @@ Steps
 1. Add Questions
 2. Get inquirer to work
 3. Check access to data from inquirer
-4. 
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
+4. fill in writefileAsync for write to file function
+5. Test call write to file
+6. Build structure for readMeContent variable
+7. Add table of contents array
+8. Research licenses and badges
+9. get badge formatting scripts
+10. get license text
+11. create if statement for license/badge selector
+12. test functionality
 
-Componets Needed:
-AXIOS to Github
+
 
 How it works:
 User invokes node index.js in terminal
 CLI App runs and prompts user for:
 Github Username
-App then call Axios with the github username to provide the data for the repo
+name, email, areas to fill in 
+choose license option
+then 
+pastes inforamtion into sections 
+uses if statement to select badge and license text 
+writes file to readme.md file
 
 * At least one badge
 * Project title
