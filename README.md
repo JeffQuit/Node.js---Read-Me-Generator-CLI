@@ -9,7 +9,9 @@ The Good README.md generator project is the node.js week project due for the UCL
 ## Demo
 
 
-+<img src="/DemoImgs/ReadMeGif.gif?raw=true">
++<img src="/DemoImgs/S1.png?raw=true">
++<img src="/DemoImgs/S2.png?raw=true">
++<img src="/DemoImgs/S3.png?raw=true">
 
 ## Table of Contents
 * [Installation](#installation)
